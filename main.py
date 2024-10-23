@@ -1,7 +1,7 @@
 import pygame
 import random
 import os
-import time
+import sys
 
 # Global variable for highscore
 highscore = None
@@ -142,11 +142,25 @@ class Paeta_laboratoriosta:
             highscore = 0      # Set highscore to 0 if the file does not exist
     
     # Load all necessary images for the game
-    def lataa_kuvat(self):
+    """def lataa_kuvat(self):
         self.kuvat = []      # List to hold images
         for nimi in ["robo", "ovi", "hirvio", "kolikko"]:     # List of image file names
             # Load each image and append it to the list
-            self.kuvat.append(pygame.image.load(os.path.join(os.path.dirname(__file__), nimi + ".png")))
+            self.kuvat.append(pygame.image.load(os.path.join(os.path.dirname(__file__), nimi + ".png")))"""
+
+    @staticmethod
+    def resource_path(relative_path):
+        try:
+            base_path = sys._MEIPASS
+        except AttributeError:
+            base_path = os.path.abspath(".")
+
+        return os.path.join(base_path, relative_path)
+
+    def lataa_kuvat(self):
+        self.kuvat = []      # List to hold images
+        for nimi in ["robo", "ovi", "hirvio", "kolikko"]:
+            self.kuvat.append(pygame.image.load(self.resource_path(nimi + ".png")))
 
     # Start a new game
     def uusi_peli(self):
