@@ -141,13 +141,14 @@ class Paeta_laboratoriosta:
         else:
             highscore = 0      # Set highscore to 0 if the file does not exist
     
-    # Load all necessary images for the game
+    
     """def lataa_kuvat(self):
         self.kuvat = []      # List to hold images
         for nimi in ["robo", "ovi", "hirvio", "kolikko"]:     # List of image file names
             # Load each image and append it to the list
             self.kuvat.append(pygame.image.load(os.path.join(os.path.dirname(__file__), nimi + ".png")))"""
-
+    
+    # Needed for correct path if it is running as an app
     @staticmethod
     def resource_path(relative_path):
         try:
@@ -156,7 +157,8 @@ class Paeta_laboratoriosta:
             base_path = os.path.abspath(".")
 
         return os.path.join(base_path, relative_path)
-
+    
+    # Load all necessary images for the game
     def lataa_kuvat(self):
         self.kuvat = []      # List to hold images
         for nimi in ["robo", "ovi", "hirvio", "kolikko"]:
